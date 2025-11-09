@@ -3,44 +3,55 @@ import { createContext, useContext, useEffect, useState } from 'react'
 type Theme = 'dark' | 'light' | 'system'
 
 type ThemeProviderProps = {
-  children: React.ReactNode
-  defaultTheme?: Theme
-  attribute?: 'class'
+	children: React.ReactNode
+	defaultTheme?: Theme
+	attribute?: 'class'
 }
 
 export const ThemeProviderContext = createContext<{
-  theme: Theme
-  setTheme: (theme: Theme) => void
+	theme: Theme
+	setTheme: (theme: Theme) => void
 }>({
-  theme: 'system',
-  setTheme: () => null,
+	theme: 'system',
+	setTheme: () => null
 })
 
-export function ThemeProvider({ children, defaultTheme = 'system', attribute = 'class' }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme)
+export function ThemeProvider({
+	children,
+	defaultTheme = 'system',
+	attribute = 'class'
+}: ThemeProviderProps) {
+	const [theme, setTheme] = useState<Theme>(defaultTheme)
 
-  useEffect(() => {
-    const root = window.document.documentElement
+	useEffect(() => {
+		const root = window.document.documentElement
 
-    root.classList.remove('light', 'dark')
+		root.classList.remove('light', 'dark')
 
-    if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		if (theme === 'system') {
+			const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+				.matches
+				? 'dark'
+				: 'light'
 
-      root.classList.add(systemTheme)
-      return
-    }
+			root.classList.add(systemTheme)
+			return
+		}
 
-    root.classList.add(theme)
-  }, [theme])
+		root.classList.add(theme)
+	}, [theme])
 
-  return <ThemeProviderContext.Provider value={{ theme, setTheme }}>{children}</ThemeProviderContext.Provider>
+	return (
+		<ThemeProviderContext.Provider value={{ theme, setTheme }}>
+			<div className='w-full h-full bg-background'>{children}</div>
+		</ThemeProviderContext.Provider>
+	)
 }
 
 export const useTheme = () => {
-  const context = useContext(ThemeProviderContext)
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider')
-  }
-  return context
+	const context = useContext(ThemeProviderContext)
+	if (!context) {
+		throw new Error('useTheme must be used within a ThemeProvider')
+	}
+	return context
 }
