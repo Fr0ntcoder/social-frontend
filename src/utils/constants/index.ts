@@ -36,11 +36,7 @@ export const APP_URL = {
 	AUTH: '/auth',
 	FOLLOWERS: '/followers',
 	FOLLOWING: '/following',
-	POSTS: {
-		ALL: '/posts',
-		ID: '/posts/:id'
-	},
-	USERS: {
-		ID: '/profile/:id'
-	}
+	POSTS: '/posts',
+	POST: '/posts/:id',
+	USERS: '/users'
 }

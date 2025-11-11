@@ -43,7 +43,9 @@ export function ThemeProvider({
 
 	return (
 		<ThemeProviderContext.Provider value={{ theme, setTheme }}>
-			<div className='w-full h-full bg-background'>{children}</div>
+			<div className='w-full h-full bg-background text-foreground'>
+				{children}
+			</div>
 		</ThemeProviderContext.Provider>
 	)
 }

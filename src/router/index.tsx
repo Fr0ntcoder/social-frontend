@@ -7,7 +7,7 @@ import { FollowersPage } from '@/pages/followers'
 import { FollowingPage } from '@/pages/following'
 import { HomePage } from '@/pages/home'
 import { PostPage } from '@/pages/post'
-import { PostsPage } from '@/pages/posts/PostsPage'
+import { PostsPage } from '@/pages/posts'
 import { ProfilePage } from '@/pages/profile'
 
 import { APP_URL } from '@/utils/constants'
@@ -34,15 +34,15 @@ export const router = createBrowserRouter([
 				element: <FollowingPage />
 			},
 			{
-				path: APP_URL.POSTS.ID,
+				path: APP_URL.POST,
 				element: <PostPage />
 			},
 			{
-				path: APP_URL.POSTS.ALL,
+				path: APP_URL.POSTS,
 				element: <PostsPage />
 			},
 			{
-				path: APP_URL.USERS.ID,
+				path: APP_URL.USERS,
 				element: <ProfilePage />
 			}
 		]

@@ -1,16 +1,16 @@
 import { Outlet } from 'react-router-dom'
 
-import { Container } from '@/components/ui/elements/container'
+import { Container } from '@/components/ui/container'
 
 import { Header } from './header'
-import { Sidebar } from './sidebar'
+import { Navbar } from './navbar'
 
 export const MainLayout = () => {
 	return (
 		<>
 			<Header />
 			<Container className='flex flex-2'>
-				<Sidebar />
+				<Navbar />
 				<main className='w-full'>
 					<Outlet />
 				</main>

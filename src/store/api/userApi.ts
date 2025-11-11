@@ -27,7 +27,7 @@ export const userApi = api.injectEndpoints({
 	})
 })
 
-export const { useCurrentUserQuery, useGetByIdQuery, useUpdateUserMutation } =
+export const { useLazyCurrentUserQuery, useGetByIdQuery, useUpdateUserMutation } =
 	userApi
 
 export const {
