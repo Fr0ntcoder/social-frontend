@@ -1,3 +1,5 @@
+import type { IComment } from '@/utils/types'
+
 import type { IFollow } from './follow.types'
 import type { ILike } from './like.types'
 import type { IPost } from './post.types'
@@ -17,7 +19,7 @@ export interface IUser {
 	following: IFollow[]
 	followers: IFollow[]
 	likes: ILike[]
-	comments: Comment[]
+	comments: IComment[]
 	isFollowing?: boolean
 }
 

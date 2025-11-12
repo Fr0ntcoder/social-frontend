@@ -1,7 +1,7 @@
 import { api } from '@/store/api/api'
 
 import { API_URL } from '@/utils/constants'
-import type { IFollowRequest } from '@/utils/types'
+import type { IFollowRequest } from '@/utils/types/follow.types'
 
 export const followApi = api.injectEndpoints({
 	endpoints: builder => ({

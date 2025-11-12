@@ -1,7 +1,7 @@
-import { API_URL } from '@/utils/constants'
-import type { IPost, IPostRequest } from '@/utils/types'
+import { api } from '@/store/api/api'
 
-import { api } from './api'
+import { API_URL } from '@/utils/constants'
+import type { IPost, IPostRequest } from '@/utils/types/post.types'
 
 export const postApi = api.injectEndpoints({
 	endpoints: builder => ({

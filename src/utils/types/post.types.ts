@@ -1,3 +1,4 @@
+import type { IComment } from './comment.types'
 import type { ILike } from './like.types'
 import type { IUser } from './user.types'
 
@@ -7,7 +8,7 @@ export interface IPost {
 	author: IUser
 	authorId: string
 	likes: ILike[]
-	comments: Comment[]
+	comments: IComment[]
 	likedByUser: boolean
 	createdAt: Date
 	updatedAt: Date

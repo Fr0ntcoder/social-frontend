@@ -1,11 +1,8 @@
-import { API_URL } from '@/utils/constants'
-import type {
-	TAuthLoginRequest,
-	TAuthRegisterRequest,
-	Token
-} from '@/utils/types'
+import { api } from '@/store/api/api'
 
-import { api } from './api'
+import { API_URL } from '@/utils/constants'
+import type { TAuthLoginRequest, TAuthRegisterRequest } from '@/utils/types'
+import type { Token } from '@/utils/types/token.types'
 
 export const authApi = api.injectEndpoints({
 	endpoints: builder => ({

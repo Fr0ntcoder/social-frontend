@@ -1,7 +1,7 @@
 import { api } from '@/store/api/api'
 
 import { API_URL } from '@/utils/constants'
-import type { ILike, ILikeRequest } from '@/utils/types'
+import type { ILike, ILikeRequest } from '@/utils/types/like.types'
 
 export const likeApi = api.injectEndpoints({
 	endpoints: builder => ({

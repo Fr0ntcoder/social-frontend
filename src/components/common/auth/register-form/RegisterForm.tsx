@@ -6,8 +6,8 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { FieldInput } from '@/components/ui/form/field-input'
 
-import { useRegisterMutation } from '@/store/api/authApi'
-import { useLazyCurrentUserQuery } from '@/store/api/userApi'
+import { useRegisterMutation } from '@/store/auth/authApi'
+import { useLazyCurrentUserQuery } from '@/store/user/userApi'
 
 import { errorCheck } from '@/utils/helpers/errorCheck'
 import { type TAuthRegisterRequest, authRegisterScheme } from '@/utils/types'

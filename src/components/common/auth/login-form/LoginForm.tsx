@@ -6,11 +6,11 @@ import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { FieldInput } from '@/components/ui/form/field-input'
 
-import { useLoginMutation } from '@/store/api/authApi'
-import { useLazyCurrentUserQuery } from '@/store/api/userApi'
+import { useLoginMutation } from '@/store/auth/authApi'
 
 import { errorCheck } from '@/utils/helpers/errorCheck'
 import { type TAuthLoginRequest, authLoginScheme } from '@/utils/types'
+import { useLazyCurrentUserQuery } from '@/store/user/userApi'
 
 interface ILoginFormProps {
 	setSelected: (value: 'login' | 'register') => void
@@ -36,6 +36,7 @@ export const LoginForm = ({ setSelected }: ILoginFormProps) => {
 	const onSubmit = async (data: TAuthLoginRequest) => {
 		try {
 			await login(data).unwrap()
+			await trigger().unwrap()
 			toast.success('Успешный вход!')
 			navigate('/')
 		} catch (error) {

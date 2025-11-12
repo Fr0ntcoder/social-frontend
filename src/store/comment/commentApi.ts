@@ -1,7 +1,7 @@
 import { api } from '@/store/api/api'
 
 import { API_URL } from '@/utils/constants'
-import type { IComment, ICommentRequest } from '@/utils/types'
+import type { IComment, ICommentRequest } from '@/utils/types/comment.types'
 
 export const commentApi = api.injectEndpoints({
 	endpoints: builder => ({

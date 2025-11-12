@@ -5,6 +5,7 @@ import { Toaster } from 'sonner'
 
 import { store } from '@/store/store.ts'
 
+import { AuthGuard } from '@/provider/auth.guard'
 import { ThemeProvider } from '@/provider/theme-provider.tsx'
 
 import { AppRouter } from '@/router/index.tsx'
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<Provider store={store}>
 			<ThemeProvider defaultTheme='dark'>
-				<AppRouter />
+				<AuthGuard>
+					<AppRouter />
+				</AuthGuard>
 				<Toaster position='top-center' />
 			</ThemeProvider>
 		</Provider>

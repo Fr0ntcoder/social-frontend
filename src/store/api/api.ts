@@ -1,7 +1,18 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 
+import type { RootState } from '@/store/store'
+
 const baseQuery = fetchBaseQuery({
-	baseUrl: `/api`
+	baseUrl: `/api`,
+	prepareHeaders: (headers, { getState }) => {
+		const token =
+			(getState() as RootState).auth.token || localStorage.getItem('token')
+
+		if (token) {
+			headers.set('authorization', `Bearer ${token}`)
+		}
+		return headers
+	}
 })
 
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 1 })

@@ -1,7 +1,7 @@
-import { API_URL } from '@/utils/constants'
-import type { IUser, IUserUpdate } from '@/utils/types'
+import { api } from '@/store/api/api'
 
-import { api } from './api'
+import { API_URL } from '@/utils/constants'
+import type { IUser } from '@/utils/types'
 
 export const userApi = api.injectEndpoints({
 	endpoints: builder => ({
@@ -17,7 +17,7 @@ export const userApi = api.injectEndpoints({
 				method: 'GET'
 			})
 		}),
-		updateUser: builder.mutation<IUser, IUserUpdate>({
+		updateUser: builder.mutation<IUser, { id: string; data: FormData }>({
 			query: ({ data, id }) => ({
 				url: API_URL.USER.UPDATE(id),
 				method: 'PUT',
@@ -27,8 +27,12 @@ export const userApi = api.injectEndpoints({
 	})
 })
 
-export const { useLazyCurrentUserQuery, useGetByIdQuery, useUpdateUserMutation } =
-	userApi
+export const {
+  useLazyCurrentUserQuery,
+	useCurrentUserQuery,
+	useGetByIdQuery,
+	useUpdateUserMutation
+} = userApi
 
 export const {
 	endpoints: { currentUser, getById, updateUser }
