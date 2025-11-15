@@ -15,7 +15,7 @@ export const likeApi = api.injectEndpoints({
 		unlike: builder.mutation<void, string>({
 			query: id => ({
 				url: API_URL.LIKE.DELETE(id),
-				method: 'DELETE '
+				method: 'DELETE'
 			})
 		})
 	})

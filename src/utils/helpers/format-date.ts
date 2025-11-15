@@ -3,5 +3,5 @@ export const formatDate = (date?: Date) => {
 		return ''
 	}
 
-	return new Date(date).toLocaleString()
+	return new Date(date).toLocaleDateString()
 }

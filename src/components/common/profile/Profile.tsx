@@ -9,8 +9,9 @@ import { selectCurrent } from '@/store/auth/authSlice'
 import { BASE_URL } from '@/utils/constants'
 import { cn } from '@/utils/helpers/cn'
 
-interface ProfileProps extends HTMLAttributes<HTMLDivElement> {}
-export const Profile = ({ className }: ProfileProps) => {
+interface Props extends HTMLAttributes<HTMLDivElement> {}
+
+export const Profile = ({ className }: Props) => {
 	const current = useSelector(selectCurrent)
 
 	if (!current) return null
@@ -20,7 +21,7 @@ export const Profile = ({ className }: ProfileProps) => {
 		<div
 			className={cn(
 				className,
-				'flex flex-col text-xs bg-muted p-4 rounded-2xl'
+				'w-full flex flex-col text-lg bg-muted p-4 rounded-2xl'
 			)}
 		>
 			<Picture src={`${BASE_URL}${avatarUrl}`} className='mb-3' alt='аватар' />

@@ -1,18 +1,18 @@
 import { api } from '@/store/api/api'
 
 import { API_URL } from '@/utils/constants'
-import type { IPost, IPostRequest } from '@/utils/types/post.types'
+import type { IPost, TPostRequest } from '@/utils/types/post.types'
 
 export const postApi = api.injectEndpoints({
 	endpoints: builder => ({
-		createPost: builder.mutation<IPost, IPostRequest>({
+		createPost: builder.mutation<IPost, TPostRequest>({
 			query: data => ({
 				url: API_URL.POST.CREATE,
 				method: 'POST',
 				body: data
 			})
 		}),
-		getAllPost: builder.query<IPost[], void>({
+		getAllPosts: builder.query<IPost[], void>({
 			query: () => ({
 				url: API_URL.POST.ALL,
 				method: 'GET'
@@ -27,7 +27,7 @@ export const postApi = api.injectEndpoints({
 		deletePost: builder.mutation<void, string>({
 			query: id => ({
 				url: API_URL.POST.DELETE(id),
-				method: 'DELETE '
+				method: 'DELETE'
 			})
 		})
 	})
@@ -35,11 +35,13 @@ export const postApi = api.injectEndpoints({
 
 export const {
 	useCreatePostMutation,
-	useGetAllPostQuery,
+	useGetAllPostsQuery,
+	useLazyGetAllPostsQuery,
+	useLazyGetPostByIdQuery,
 	useGetPostByIdQuery,
 	useDeletePostMutation
 } = postApi
 
 export const {
-	endpoints: { createPost, getAllPost, getPostById, deletePost }
+	endpoints: { createPost, getAllPosts, getPostById, deletePost }
 } = postApi

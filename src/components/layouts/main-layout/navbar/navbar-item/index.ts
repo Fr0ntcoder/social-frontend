@@ -1,1 +1,1 @@
-export { NavbarItem } from './NavbarItem'
+export type { INavbarItem, NavbarItem } from './NavbarItem'

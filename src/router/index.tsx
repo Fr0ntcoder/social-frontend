@@ -5,7 +5,6 @@ import { MainLayout } from '@/components/layouts/main-layout'
 import { AuthPage } from '@/pages/auth'
 import { FollowersPage } from '@/pages/followers'
 import { FollowingPage } from '@/pages/following'
-import { HomePage } from '@/pages/home'
 import { PostPage } from '@/pages/post'
 import { PostsPage } from '@/pages/posts'
 import { ProfilePage } from '@/pages/profile'
@@ -23,7 +22,7 @@ export const router = createBrowserRouter([
 		children: [
 			{
 				path: APP_URL.HOME,
-				element: <HomePage />
+				element: <PostsPage />
 			},
 			{
 				path: APP_URL.FOLLOWERS,

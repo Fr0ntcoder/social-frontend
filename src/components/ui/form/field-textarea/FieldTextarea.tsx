@@ -1,27 +1,25 @@
 import type { HTMLAttributes } from 'react'
 import { type Control, useController } from 'react-hook-form'
 
-import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
 
 import { cn } from '@/utils/helpers/cn'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	name: string
-	label: string
-	type?: string
+	label?: string
 	placeholder?: string
 	required?: string
 	control: Control<any>
 }
 
-export const FieldInput = ({
+export const FieldTextarea = ({
+	className,
 	name,
 	label,
-	type,
 	placeholder,
-	control,
-	className
+	control
 }: Props) => {
 	const {
 		field,
@@ -36,21 +34,23 @@ export const FieldInput = ({
 
 	return (
 		<div className={cn(className, 'flex flex-col')}>
-			<Label htmlFor={name} className='mb-2.5'>
-				{label}
-			</Label>
-			<Input
-				type={type}
+			{label && (
+				<Label htmlFor={name} className='mb-2.5'>
+					{label}
+				</Label>
+			)}
+			<Textarea
 				name={field.name}
 				id={name}
 				placeholder={placeholder}
 				value={field.value}
 				onChange={field.onChange}
 				onBlur={field.onBlur}
-				className='mb-1.5'
 			/>
 			{error && (
-				<span className='text-xs text-red-600'>{error.message as string}</span>
+				<span className='text-sm text-red-600 mt-1.5'>
+					{error.message as string}
+				</span>
 			)}
 		</div>
 	)

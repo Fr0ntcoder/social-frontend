@@ -38,5 +38,5 @@ export const APP_URL = {
 	FOLLOWING: '/following',
 	POSTS: '/posts',
 	POST: '/posts/:id',
-	USERS: '/users'
+	USERS: '/users/:id'
 }

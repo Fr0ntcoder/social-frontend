@@ -24,12 +24,12 @@ const data: INavbarItem[] = [
 	}
 ]
 
-interface NavbarProps extends HTMLAttributes<HTMLDivElement> {}
+interface Props extends HTMLAttributes<HTMLDivElement> {}
 
-export const Navbar = ({ className }: NavbarProps) => {
+export const Navbar = ({ className }: Props) => {
 	return (
-		<nav className={cn(className, 'max-w-2xs w-full')}>
-			<div className='flex flex-col gap-2'>
+		<nav className={cn(className, 'w-full')}>
+			<div className='flex flex-col gap-3'>
 				{data.map(item => {
 					return (
 						<NavbarItem icon={item.icon} href={item.href} key={item.href}>

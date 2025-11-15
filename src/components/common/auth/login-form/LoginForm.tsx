@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import type { HTMLAttributes } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -7,15 +8,16 @@ import { Button } from '@/components/ui/button'
 import { FieldInput } from '@/components/ui/form/field-input'
 
 import { useLoginMutation } from '@/store/auth/authApi'
+import { useLazyCurrentUserQuery } from '@/store/user/userApi'
 
 import { errorCheck } from '@/utils/helpers/errorCheck'
 import { type TAuthLoginRequest, authLoginScheme } from '@/utils/types'
-import { useLazyCurrentUserQuery } from '@/store/user/userApi'
 
-interface ILoginFormProps {
+interface Props extends HTMLAttributes<HTMLFormElement> {
 	setSelected: (value: 'login' | 'register') => void
 }
-export const LoginForm = ({ setSelected }: ILoginFormProps) => {
+
+export const LoginForm = ({ setSelected }: Props) => {
 	const {
 		handleSubmit,
 		control,
@@ -30,8 +32,8 @@ export const LoginForm = ({ setSelected }: ILoginFormProps) => {
 	})
 
 	const [login, { isLoading }] = useLoginMutation()
-	const navigate = useNavigate()
 	const [trigger] = useLazyCurrentUserQuery()
+	const navigate = useNavigate()
 
 	const onSubmit = async (data: TAuthLoginRequest) => {
 		try {

@@ -25,12 +25,12 @@ export const MainLayout = () => {
 	return (
 		<>
 			<Header />
-			<Container className='flex flex-2'>
-				<Navbar className='flex-1' />
-				<main className='w-full flex-2'>
+			<Container className='flex gap-5 items-start'>
+				<Navbar className='max-w-[200px]' />
+				<main className='w-full'>
 					<Outlet />
 				</main>
-				<Profile className='w-52' />
+				<Profile className='max-w-[300px]' />
 			</Container>
 		</>
 	)
