@@ -1,16 +1,14 @@
 import type { LucideIcon } from 'lucide-react'
-import type { HTMLAttributes, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
-interface Props extends HTMLAttributes<HTMLAnchorElement> {
+export type INavbarItem = {
 	children: ReactNode
 	icon: LucideIcon
 	href: string
 }
 
-export type INavbarItem = Pick<Props, 'children' | 'icon' | 'href'>
-
-export const NavbarItem = ({ children, icon: Icon, href }: Props) => {
+export const NavbarItem = ({ children, icon: Icon, href }: INavbarItem) => {
 	return (
 		<Link className='flex justify-start items-center text-lg gap-2' to={href}>
 			<Icon size={20} />

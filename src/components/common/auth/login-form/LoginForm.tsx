@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { HTMLAttributes } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -13,7 +12,7 @@ import { useLazyCurrentUserQuery } from '@/store/user/userApi'
 import { errorCheck } from '@/utils/helpers/errorCheck'
 import { type TAuthLoginRequest, authLoginScheme } from '@/utils/types'
 
-interface Props extends HTMLAttributes<HTMLFormElement> {
+type Props = {
 	setSelected: (value: 'login' | 'register') => void
 }
 

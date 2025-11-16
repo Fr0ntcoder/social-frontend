@@ -1,5 +1,4 @@
 import { IdCard, List, Users } from 'lucide-react'
-import type { HTMLAttributes } from 'react'
 
 import { APP_URL } from '@/utils/constants'
 import { cn } from '@/utils/helpers/cn'
@@ -24,7 +23,9 @@ const data: INavbarItem[] = [
 	}
 ]
 
-interface Props extends HTMLAttributes<HTMLDivElement> {}
+type Props = {
+	className?: string
+}
 
 export const Navbar = ({ className }: Props) => {
 	return (

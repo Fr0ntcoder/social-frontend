@@ -1,4 +1,3 @@
-import type { HTMLAttributes } from 'react'
 import { type Control, useController } from 'react-hook-form'
 
 import { Input } from '@/components/ui/input'
@@ -6,13 +5,14 @@ import { Label } from '@/components/ui/label'
 
 import { cn } from '@/utils/helpers/cn'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+type Props = {
 	name: string
 	label: string
 	type?: string
 	placeholder?: string
 	required?: string
 	control: Control<any>
+	className?: string
 }
 
 export const FieldInput = ({

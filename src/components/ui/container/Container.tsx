@@ -1,6 +1,9 @@
-import type { HTMLAttributes } from 'react'
+import type { ReactNode } from 'react'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {}
+type Props = {
+	children: ReactNode
+	className?: string
+}
 
 export const Container = ({ children, className }: Props) => {
 	return <div className={`${className} max-w-7xl mx-auto px-6`}>{children}</div>

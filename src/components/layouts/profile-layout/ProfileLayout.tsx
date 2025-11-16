@@ -6,12 +6,10 @@ import { Container } from '@/components/ui/container'
 
 import { selectCurrent, selectIsAuth } from '@/store/auth/authSlice'
 
+import { Header } from '@/components/common/header'
 import { Navbar } from '@/components/common/navbar'
-import { Profile } from '@/components/common/profile'
 
-import { Header } from '../../common/header'
-
-export const MainLayout = () => {
+export const ProfileLayout = () => {
 	const isAuth = useSelector(selectIsAuth)
 	const user = useSelector(selectCurrent)
 	const navigate = useNavigate()
@@ -30,7 +28,6 @@ export const MainLayout = () => {
 				<main className='w-full'>
 					<Outlet />
 				</main>
-				<Profile className='max-w-[300px]' />
 			</Container>
 		</>
 	)

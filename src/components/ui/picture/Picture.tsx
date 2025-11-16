@@ -1,10 +1,9 @@
-import type { HTMLAttributes } from 'react'
-
 import { AspectRatio } from '@/components/ui/aspect-ratio'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+type Props = {
 	src?: string
 	alt: string
+	className?: string
 }
 
 export const Picture = ({ src, alt, className }: Props) => {

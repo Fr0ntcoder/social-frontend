@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Pencil } from 'lucide-react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
 import { FieldTextarea } from '@/components/ui/form/field-textarea'
@@ -20,21 +21,20 @@ export const CreatePost = () => {
 		handleSubmit,
 		control,
 		formState: { errors },
-		setValue,
-		getValues
+		setValue
 	} = useForm<TPostRequest>({
 		resolver: zodResolver(postScheme),
 		mode: 'onChange'
 	})
-
-	const error = errors.content?.message
 
 	const onSubmit = async (data: TPostRequest) => {
 		try {
 			await createPost(data).unwrap()
 			setValue('content', '')
 			await trigger().unwrap()
-		} catch (error) {}
+		} catch (error) {
+			toast.error('Ошибка при создании поста')
+		}
 	}
 	return (
 		<>

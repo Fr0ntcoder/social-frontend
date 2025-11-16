@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import type { HTMLAttributes } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -10,15 +9,14 @@ import { FieldInput } from '@/components/ui/form/field-input'
 import { useRegisterMutation } from '@/store/auth/authApi'
 import { useLazyCurrentUserQuery } from '@/store/user/userApi'
 
-import { cn } from '@/utils/helpers/cn'
 import { errorCheck } from '@/utils/helpers/errorCheck'
 import { type TAuthRegisterRequest, authRegisterScheme } from '@/utils/types'
 
-interface Props extends HTMLAttributes<HTMLFormElement> {
+type Props = {
 	setSelected: (value: 'login' | 'register') => void
 }
 
-export const RegisterForm = ({ className, setSelected }: Props) => {
+export const RegisterForm = ({ setSelected }: Props) => {
 	const {
 		handleSubmit,
 		control,
@@ -56,10 +54,7 @@ export const RegisterForm = ({ className, setSelected }: Props) => {
 	}
 
 	return (
-		<form
-			onSubmit={handleSubmit(onSubmit)}
-			className={cn(className, 'flex flex-col gap-4')}
-		>
+		<form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-4'>
 			<FieldInput
 				name='name'
 				label='Имя'
